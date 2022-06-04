@@ -213,14 +213,17 @@ Y al final vemos el resultado accediendo al sitio `https://{nombre_app}.heroku.c
 
 ## Cliente de heroku 
 
-Desde el cliente de heroku puedo ver el log, base de datos y configuraciones del server. 
+Desde el cliente de heroku puedo ver el log del servidor hasta cambiar el codigo . 
  
 ```markdow
-sudo snap install --classic heroku
-heroku --version
-heroku login 
-heroku login -i
-heroku logs --app {aplicación} --tail
+sudo snap install --classic heroku //Instalacion en linux
+heroku --version 
+heroku login   
+heroku login -i  // Login desde la web 
+heroku logs --tail --app {aplicación} // Logs de las acciones en la web
+heroku buildpacks:set heroku/php --app {aplicación}  // Cambio del lenguaje a php
+heroku buildpacks:set heroku/java --app {aplicación}  // Cambio del lenguaje a java
+heroku buildpacks:set heroku-community/static --app {aplicación}  // Cambio a sitio estatico (html)
 ```
 
 Desde Heroku tambien es posible visualizar el log desde el item `View logs`
