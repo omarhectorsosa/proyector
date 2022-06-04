@@ -1,0 +1,182 @@
+layout: true
+class: center, middle, inverse
+---
+
+# Symfony 4.3
+ 
+---
+layout: true
+class: animated fadeInUp
+---
+## Agenda
+
+(Tiempo estimado: 2h)
+
+* ¿Que es un Framework?
+  - Defincion de framework
+  - Ventajas y desventajas
+  - ¿Que hay que tener en cuenta a elegir un framework?
+* Introduccion de Symfony
+  - Modelo MVC
+  - Instalacion basica.
+  - Comandos
+  - Configuracion 
+  - Codigo y base de datos.    
+  - Migrate de estructura
+  - Migracion de datos  
+
+---
+
+## Posibilidades del recurso
+
+Presion `H` o `?` para una lista de opciones.
+
+---
+## Inclusion de video
+
+Se puede incluir video de Youtube
+
+.center[<iframe width="560" height="315" src="//www.youtube.com/embed/Sa4HGmLFV5s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
+
+* Por el momento no es posible incluir video desde la CDN.
+
+---
+## Comandos
+
+* php -S localhost:8001 -t public
+* Use imagenes sin copyright o con licencias que permitan su uso en un ambito profesional.
+
+![ok](./img/ok.gif)
+
+---
+## Uso de Imagenes
+
+Para incluir imagenes se usa lo mismo que markdown:
+
+```markdown
+![ok](./img/ok.gif)
+```
+
+![ok](./img/ok.gif)
+
+---
+
+## Imagenes escaladas
+
+A veces necesitamos que la imagen __quepa__.
+
+__Ojo!__ esto ahorra tiempo pero no espacio.
+
+Se pueden escalar con:
+
+```markdown
+![:scale 30%](./img/ok.gif)
+```
+
+![:scale 30%](./img/ok.gif)
+
+```markdown
+![:scale 10%](./img/ok.gif)
+```
+
+![:scale 10%](./img/ok.gif)
+
+
+---
+
+## Posicionar imagen
+
+.pull-left[
+   Un ejemplo de texto a derecha 
+   e imagen a izquierda. 
+
+```markdown
+.pull-left[
+   Un ejemplo de texto a derecha 
+   e imagen a izquierda. 
+]
+
+.pull-right[
+   ![:scale 80%](./img/ok.gif)
+]
+```
+
+]
+
+.pull-right[
+   ![:scale 80%](./img/ok.gif)
+]
+
+Obviamente, se puede tambien hacer a la inversa:
+
+
+.pull-left[
+   ![:scale 80%](./img/ok.gif)
+   
+]
+
+.pull-right[
+   Ahora un ejemplo de texto a izquierda
+   e imagen a derecha. 
+]
+
+---
+
+### Dividir Diapositivas
+
+Para dividir se usa:
+
+```markdown
+---
+```
+
+__Atención__: Si despues de las tres lineas aparece un espacio (ya sea queriendo o por accidente),
+
+--- 
+
+en lugar de una nueva diapositiva tendran una linea horizontal.
+
+---
+
+## Uso de enlaces
+
+El sistema de enlaces es el mismo que el markdown:
+
+* __Enlaces rotulados__ como este enlace a un [blog de tecnologia](https://www.muylinux.com/).
+
+* __Enlaces autodetectados__ como este: https://www.muylinux.com/
+
+---
+## Uso de anotaciones del presentador
+
+Usando tres signos de pregunta seguidos se abre un espacio de anotaciones que podrán ser visiblesp en modo presentador.
+
+```
+???
+  Esto es una anotación para el presentador.
+```
+
+Para ver las anotaciones de esta pantalla presiona `P`.
+
+
+???
+   Esto es una anotacion. El publico no ve esta imagen:
+
+   ![:scale 30%](./img/hide.gif)
+
+   Se pueden agregar varias. (Atentos con la indentacion de 4 caracteres).
+
+---
+class: center, middle, inverse
+
+---
+## Referencia. 
+
+- [Inicio] (http://www.ticarte.com/contenido/symfony-5-tutorial-para-desarrollar-tu-primera-aplicacion-web)
+- [Controlller] (https://symfony.com/doc/current/controller.html) 
+- [PHP Console] (https://jnjsite.com/symfony-tutorial-2-los-comandos-de-consola/)   
+
+--
+## Gracias!
+
+

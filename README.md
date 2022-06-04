@@ -19,6 +19,12 @@ Dentro de la carpeta raiz del proyecto se puede proyectar ejecutando:
 ./bin/proyectar.sh
 ```
 
+* En el caso de Windows se debe acceder al ejecutable de python por ejemplo
+```bash
+C:\Users\ososa\AppData\Local\Programs\Python\Python39\python -m http.server
+C:\Users\ososa\AppData\Local\Programs\Python\Python39\python -m http.server
+
+
 ## Integracion continua y publicación
 
 * Los commmits a `development` quedan disponibles en http://dev.funcional.g.psa.com.ar

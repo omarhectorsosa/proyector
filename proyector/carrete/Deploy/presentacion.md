@@ -1,0 +1,398 @@
+layout: true
+class: center, middle, inverse
+---
+
+# Integración y entregas continuas CI/CD .  
+
+---
+layout: true
+class: animated fadeInUp
+---
+## Agenda
+
+(Tiempo estimado: 2h)
+
+* Conceptos principales
+   - Concepto CI/CD
+   - Metodologia Devops y herramientas PaaS
+* Crear base de datos mysql remota
+   - Crear BD con `FreeMySQLhosting` 
+   - Conectar y administrar con `PhpMyAdmin`
+   - Conectar proyecto Heroku a base de datos remota   
+* CI/CD con Heroku y GitHub
+   - ¿Que es Heroku? 
+   - Uso de Git y GitHub en entregas continuas.
+   - Creando proyecto en GitHub
+   - Concepto de branch, push, push request y merge en GitHub
+   - Creando proyecto en Heroku y vincularlo a GitHub 
+* CI/CD con AWS y GitLab   
+   - Creacion y configuracion de un `AWS Bucket`
+   - Configurar GiLab CI/CD
+
+---
+
+## Concepto de CI/CD: Integración continua y entrega continua
+
+.texto-grande[La integración y la entrega continua (CI y CD, respectivamente) encarnan una cultura, principios y prácticas que permiten a los desarrolladores de aplicaciones entregar cambios de código de manera más frecuente y fiable.]
+
+.pull-center[
+   ![:scale 80%](./img/ci_cd.png)
+]
+
+---
+
+## Metodologia Devops y herramientas PaaS
+
+- DevOps es un acrónimo inglés de development (desarrollo) y operations (operaciones), que se refiere a una metodología de desarrollo de software que se centra en la comunicación, colaboración e integración entre desarrolladores de software y los profesionales de sistemas en las tecnologías de la información (IT)
+
+- Un PaaS, como su nombre lo indica, es una tecnología de plataforma como servicio que básicamente se encarga de proporcionarnos un entorno adecuado para el despliegue y el desarrollo de aplicaciones.
+
+.pull-center[
+   ![:scale 30%](./img/PaaS.png)
+]
+
+Algunas herramientas PaaS
+
+- [Heroku]()
+- [AWS CloudFormation](https://aws.amazon.com/es/)
+- [Google Cloud](https://cloud.google.com)
+- [Always Data](https://www.alwaysdata.com) 
+
+---
+
+## Base de datos remota
+
+Vamos a generar una base de datos MySQL remota, en esta ocasion utilizaremos [FreeMySQLhosting](https://www.freemysqlhosting.net/)
+
+.pull-center[
+   ![:scale 80%](./img/free-mysql.png)
+]
+
+Creamos la base de datos y obtendremos el servidor, nombre de base de datos, usuario y contraseña
+
+.pull-center[
+   ![:scale 80%](./img/free-mysql-db.png)
+]
+
+---
+
+## Base de datos remota
+
+Desde [PhpMyAdmin](https://www.phpmyadmin.co/) podemos acceder a la adminstracion de la base de datos.
+
+.pull-center[
+   ![:scale 50%](./img/db-phpmyadmin.png)
+]
+
+---
+
+## Acceso y uso de GitHub
+
+* Para acceder a git solo debemos tener una cuenta en [GitHub](https://github.com/)
+* Los proyectos pueden crearse desde nuestro Git local o desde la propia cuenta git. 
+* Nuestra credenciales (usuario y contraseña) son las claves que utilizaremos luego de generar los `git push`
+* Para crear un proyecto, se accede a GitHub y se crea un proyecto nuevo o duplicar (forkear) un proyecto existente.
+
+.pull-center[
+   ![:scale 50%](./img/new_git.png)
+]
+
+* Y desde nuestro local se clona el repositorio creado `git clone {url_proyecto}` 
+
+---
+
+## Heroku
+
+.texto-grande[Heroku es plataforma especializada en ofrecer servicios de servidores y redes administrados en donde se pueden alojar aplicaciones de diferentes lenguajes de programación como Python, Java, PHP y más. ]
+
+---
+
+## Crear app en heroku
+
+* Para acceder a heroku debemos tener una cuenta en [Heroku](https://www.heroku.com/)
+* Se accede a la herramienta y se crea un app desde `new app`
+
+.pull-center[
+   ![:scale 30%](./img/new_app.png)
+]
+
+* Y se accede a la vista de la app 
+
+.pull-center[
+   ![:scale 100%](./img/view_app.png)
+]
+
+---
+
+## Herramienta para establecer las entregas continuas (CD)
+
+.texto-grande[Ya tenemos nuestro repositorio en `GitHub` y nuestra App en `Heroku`]
+
+* Debemos implementas estas herramientas CD para poder hacer entregas continuas automatizadas. 
+* Conectar nuestro repositorio de **GitHub** con nuestro app en **Heroku**
+* Desde Heroku nos ubicamos en la seccion de implementacion **Deploy**
+
+.pull-center[
+   ![:scale 150%](./img/deploy_app.png)
+]
+
+---
+
+## Conectar mi repositorio git con mi app heroku
+
+* Selecciono [GitHub](https://github.com/) como sistema de repositorio (conectado con mi usuario)
+
+.pull-center[
+   ![:scale 80%](./img/repo_app.png)
+]
+
+* Busco y conecto el repositorio de **GitHub**
+
+.pull-center[
+   ![:scale 100%](./img/search_app.png)
+]
+
+---
+
+## Activar deploy automatico
+
+Una vez que nos autentiquemos en `GitHub` y asignemos el proyecto tenemos que realizar los siguientes tareas:
+
+1. `Vincular rama especifica`: Por defecto suele ser master, en tanto debemos entender que todo cambio en master deberia ser un "acto"  de deploy en produccion.
+1. `Activar deploy automatico`: Esto no se activa automaticamente cada que vez que se sube un cambio en la rama indicada
+
+.pull-center[
+   ![:scale 70%](./img/heroku-deploy-automatic.png)
+]
+
+---
+
+## Implementar proyecto y ver los cambios
+
+* Desde mi maquina clono el proyecto `git clone {url_proyecto}` y creo un `index.php`
+ 
+```markdown
+<?php 
+
+echo "Hola mundo"; 
+
+?>
+
+```
+
+* Hacemos las operaciones (add, commit y push) correspondiente para subir lo cambios en **Github** y el deploy automatico en **Heroku**
+
+```markdown
+git checkout -b rama_trabajo
+git status
+git add .
+git commit -m "Primer commit"
+git push
+``` 
+
+En las tareas habituales se utilizan los `branch` para trabajar en conjunto y se usa los `push request` para luego mergear en la rama `main` y asi realizar la entregas continuas (CD).
+
+---
+
+## Implementar proyecto y ver los cambios
+
+Al generar el push se genera el despliegue en forma automatica
+
+.pull-left[
+* Desde la cuenta de heroku reviso la actividad de la aplicacion y reviso el `build log`.
+* Puede verificar desde el log general en `more->view log`
+* Para acceder a la url se hace click en `Open app`
+]
+
+.pull-right[
+   ![:scale 80%](./img/build_app.png)
+   
+]
+
+Y al final vemos el resultado accediendo al sitio `https://{nombre_app}.heroku.com` con el siguiente resultado. 
+
+.pull-center[
+   ![:scale 80%](./img/final_app.png)
+   
+]
+
+---
+
+## Cliente de heroku 
+
+Desde el cliente de heroku puedo ver el log, base de datos y configuraciones del server. 
+ 
+```markdow
+sudo snap install --classic heroku
+heroku --version
+heroku login 
+heroku login -i
+heroku logs --app {aplicación} --tail
+```
+
+Desde Heroku tambien es posible visualizar el log desde el item `View logs`
+
+.pull-center[
+   ![:scale 45%](./img/heroku-view-logs.png)
+]
+
+---
+
+## Conectamos a la base de remota `FreeMySQLhosting` el codigo en `Heroku`
+
+Teniendo informada los datos de coneccion accedo a la base  de datos desde `heroku`
+
+```markdown
+<?php
+
+   echo '<body><main clas="container">';
+
+   echo '<div class="row text-center bg-success mb-10"><div class="col-12">Tabla.</div></div>' ;
+
+   if (!($conexion=mysqli_connect("sql5.freemysqlhosting.net","sql5496827","tAee5z4mwN","sql5496827"))) { 
+      echo '<div class="row"><div class="col-12">Error conectando a la base de datos</div></div>' ;
+      echo '</main></body>';  
+      die(); 
+   } 
+
+   $res = mysqli_query($conexion,"SELECT * FROM product") or die(mysqli_error($conexion)); ;
+
+   while($reg = mysqli_fetch_array($res)){
+      echo '<div class="row text-center b-10 boder-secondary border-radius border-5"><div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["id"].'</div>';
+      echo '<div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["name"].'</div>';
+      echo '<div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["price"].'</div>';
+      echo '<div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["description"].'</div></div>';
+   }
+
+?>
+
+```
+---
+
+# CI/CD con AWS y GitLab: ¿Que es un AWS Bucket?
+
+.texto-grande[Un bucket es un contenedor para objetos almacenados en Amazon S3. Puede almacenar cualquier cantidad de objetos en un bucket]
+
+.pull-center[
+   ![:scale 50%](./img/aws-s3.png)
+]
+
+Aclaración: Para tener acceso a una cuenta AWS se debe realizar una sucripción gratuita pero con una tarjeta de credito como primera instancia.
+
+---
+
+# CI/CD con AWS y GitLab: Crear y configura un bucket
+
+En principio debemos acceder al servicio `S3` y luego crear un bucket.
+
+.pull-center[
+   ![:scale 50%](./img/aws-bucket-list.png)
+]
+
+Configuramos el bucket.
+
+.pull-center[
+   ![:scale 50%](./img/aws-bucket-creacion.png)
+]
+---
+
+# CI/CD con AWS y GitLab: Crear y configura un bucket
+
+Configurar el bucket para que sea publico
+
+.pull-center[
+   ![:scale 50%](./img/aws-bucket-publico.png)
+]
+
+---
+
+# CI/CD con AWS y GitLab: Crear y configura un bucket
+
+Al finalizar la creacion del bucket se presenta en el listado  
+
+.pull-center[
+   ![:scale 50%](./img/aws-bucket-creado.png)
+]
+
+---
+
+# CI/CD con AWS y GitLab: Crear y configura un bucket
+
+Luego tenemos que agregar las politicas del `bucket` creado ingresando a la edicion de bucket en la seccion de `permisos`
+
+.pull-center[
+   ![:scale 50%](./img/aws-bucket-permiso.png)
+]
+
+
+---
+
+# CI/CD con AWS y GitLab: Crear y configura un bucket
+
+Agregar las siguientes politicas de ejemplo [Ver politicas](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-policy-language-overview.html)
+
+.pull-center[
+   ![:scale 50%](./img/aws-bucket-politica.png)
+]
+
+Tambien es posible generar una Politica desde [Generador politicas](https://awspolicygen.s3.amazonaws.com/policygen.html)
+
+```markdow
+{
+  "Id": "Policy1654200096995",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1654200095421",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::omarhectorsosa-template/*",
+      "Principal": "*"
+    }
+  ]
+}
+```
+
+---
+
+# CI/CD con AWS y GitLab: Crear y configura un bucket
+
+Una vez aplicada la politica veremos que el bucket se hace publico
+
+.pull-center[
+   ![:scale 70%](./img/aws-bucket-permiso-publico.png)
+]
+
+Viendo que el bucket esta disponible podemos cargar una imagen para verificar su disponibilidad.
+
+---
+
+# CI/CD con AWS y GitLab: Configurar CI/CD en GitLab
+
+Se debe agregar las siguientes variables: 
+
+- AWS_REGION
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- DEV_S3_BUCKET
+
+---
+
+## Uso de enlaces
+
+El sistema de enlaces es el mismo que el markdown:
+
+* [Git](https://git-scm.com/doc).
+* [Heroku](https://www.heroku.com/).
+* [Tutorial](https://youtu.be/hWglK8nWh60).
+* [Paas](https://www.teamnet.com.mx/blog/paas-en-la-metodolog%C3%ADa-devops)
+* [Alternativas a Heroku](https://saasradar.net/mejores-alternativas-a-heroku/#AlwaysData)
+* [CD/CI con AWS](https://www.youtube.com/watch?v=3RY3rBhUrE0)
+---
+class: center, middle, inverse
+
+## Gracias!
+
+
