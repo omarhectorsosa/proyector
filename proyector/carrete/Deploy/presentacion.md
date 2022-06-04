@@ -51,12 +51,31 @@ class: animated fadeInUp
    ![:scale 30%](./img/PaaS.png)
 ]
 
+---
+
+## Metodologia Devops y herramientas PaaS
+
 Algunas herramientas PaaS
 
-- [Heroku]()
+- [Heroku](https://www.heroku.com/)
 - [AWS CloudFormation](https://aws.amazon.com/es/)
 - [Google Cloud](https://cloud.google.com)
+- [Microsft Azure](https://azure.microsoft.com/es-es/overview/what-is-azure/)
 - [Always Data](https://www.alwaysdata.com) 
+
+Estas plataformas ofrecen algunos de estos servicios
+
+- Máquinas virtuales. Aplicaciones en la nube y máquinas virtuales Windows y Linux de gran capacidad.
+- Aplicaciones WEB y Móvil. 
+- Almacenamiento en la nube.
+- Bases de datos.
+- Aprendizaje automático.
+- Análisis.
+- Internet de las cosas.
+- Redes virtuales.
+- Otros...
+
+Tener en cuenta que estos servicio puede separados se ofrecen gratis para siempre, prueba por 12 meses entre otros planes y por eso en la incripciones piden como autenticacion datos de tarjetas de creditos.
 
 ---
 
