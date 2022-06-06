@@ -385,11 +385,82 @@ heroku  git@heroku.com:your-project.git (push)
    ![:scale 50%](./img/jenkis-repos-heroku-github.png)
 ]
 
+
 ---
 
-# Jenkis : Crear llave publica desde Heroku CLI
+# Jenkis : Tareas en jenkis
 
-## Para github 
+`¿CÓMO CREAR UNA TAREA EN JENKINS?`
+
+Dependiendo de los permisos del usuario, en el dashboard inicial aparecerá la opción “New Item“
+
+- Nombrar la tarea acorde con la actividad
+- Escoger “Freestyle project“
+- Ir a “configure“
+
+`¿CÓMO CONFIGURAR UNA TAREA DE JENKINS?`
+
+Una tarea en Jenkins de tipo “Freestyle project” se ejecuta teniendo en cuenta el siguiente flujo:
+
+- General: Define aspectos generales del proyecto
+- Source Code Management: Define dónde se encuentra el proyecto (CVS, Git, etc)
+- Build Triggers: Define qué acción va a hacer que el proyecto que estamos creando se ejecute
+- Build Environment: Define el entorno en el que se ejecutará la tarea
+- Build: Define qué acciones realizar al momento de realizar la ejecución de la tarea, por ejemplo, ejecutar un comando en una linea de comandos
+- Post-build Actions: Define acciones posteriores a la ejecución de la tarea
+Para el ejemplo crearemos un flujo configurando algunos aspectos a manera de ejemplo.
+
+---
+
+# Jenkis : Fuente de codigo
+
+En esta pestaña configuraremos Git como el repositorio donde se encuentra el código a desplegar:
+
+* Repositorio 1:
+- Repository URL: url donde se encuentra el código (github, bitbucket, gitlab, etc)
+- Credentials: Credenciales para el ingreso a este repositorio
+* Repositorio 2:
+- Repository URL: url del repositorio en heroku
+- Credentials: Credenciales para el ingreso a este repositorio
+
+.pull-center[
+   ![:scale 50%](./img/jenkis-repositorios-vincular.png)
+]
+
+Notas:
+En nuestro caso tendremos que agregar otro repositorio ya que descargaremos el código de un origen y lo subieremos a otro (heroku), no olvidar añadir el nombre de este nuevo origen.
+No olvidar que si queremos que las pruebas se ejecuten en una rama en particular, debemos configurar la rama en el parámetro “branches to build”, en nuestro caso, develop
+
+---
+
+# Jenkis : Creamos lanzadores
+
+Queremos que la tarea de Jenkins se ejecute cada vez que existe un cambio en la rama develop de nuestro repositorio, para esto seleccionamos la opción “Build when a change is pushed to BitBucket”
+
+.pull-center[
+   ![:scale 50%](./img/jenkis-lanzadores.png)
+]
+
+---
+
+# Jenkis : Deplegar en heroku
+
+Después de ejecutar las pruebas queremos que se realice el despliegue automático de nuestra aplicación en Heroku, ya que para hacer el despliegue en Heroku tan solo es necesario realizar push a la rama master del proyecto, debemos:
+
+- Añadir la acción “Git Publisher” en la opción “Add post-build action“
+- Habilitar las siguientes opciones:
+- Push Only If Build Succeeds: Esto permitirá que se realice el push siempre y cuando las acciones anteriores hayan sido exitosas
+- Añadiremos un branch con el botón “Add Branch“
+- En “branch to push” configuraremos el nombre de la rama donde queremos hacer el push, master
+- En “target remote name” configuraremos el nombre del repositorio remoto, heroku
+
+.pull-center[
+   ![:scale 50%](./img/jenkis-actions.png)
+]
+
+---
+
+# Jenkis : Crear llave publica para Github
 
 Crear las llaves en el local
 
@@ -404,8 +475,10 @@ Esto generar el archivo `id_rsa` en la carpeta `.ssh` copia su contenido en la l
 .pull-right[
    ![:scale 50%](./img/github-ssh-key-crear.png)
 ]
+---
 
-## Para heroku 
+# Jenkis : Crear llave publica para heroku
+
 
 Comenzar a configurar el accesoa los repositorios ejecutar los siguiente comando para obtener las claves de heroku: 
 
