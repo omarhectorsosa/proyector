@@ -15,16 +15,16 @@ class: animated fadeInUp
 * Conceptos principales
    - Concepto CI/CD
    - Metodologia Devops y herramientas PaaS
- * CI/CD con Heroku y GitHub
+ * Herramienta Heroku
    - ¿Que es Heroku? 
-   - Uso de Git y GitHub en entregas continuas.
-   - Creando proyecto en GitHub
-   - Concepto de branch, push, push request y merge en GitHub
-   - Creando proyecto en Heroku y vincularlo a GitHub 
-* CI/CD con AWS y GitLab   
+   - Vincular proyecto GitHub con Heroku (opensource)   
+* PaaS con AWS
    - Creacion y configuracion de un `AWS Bucket`
-   - Configurar GiLab CI/CD
-* Crear base de datos mysql remota
+   - Vincular GitLab con AWS
+* Herramienta Jenkis y Travis
+   - Hechemos un vistazo a Travis y Jenkis
+   - Vincular Gitlab a Jenkis (opensource)     
+* Alternativas para bases de datos mysql remotas 
    - Crear BD con `FreeMySQLhosting` 
    - Conectar y administrar con `PhpMyAdmin`
    - Conectar proyecto Heroku a base de datos remota  
@@ -376,7 +376,11 @@ Se debe agregar las siguientes variables:
 
 ---
 
-# CI/CD con AWS y GitLab: Configurar script y ejeuctar pipeline
+# Herramienta Jenkis y Travis
+
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 
 ---
@@ -417,6 +421,7 @@ El sistema de enlaces es el mismo que el markdown:
 * [Paas](https://www.teamnet.com.mx/blog/paas-en-la-metodolog%C3%ADa-devops)
 * [Alternativas a Heroku](https://saasradar.net/mejores-alternativas-a-heroku/#AlwaysData)
 * [CD/CI con AWS](https://www.youtube.com/watch?v=3RY3rBhUrE0)
+* [Integracion Jenkis](https://dev.to/mariehposa/achieving-continuous-integration-and-deployment-with-jenkins-4d6k)
 ---
 class: center, middle, inverse
 
