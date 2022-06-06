@@ -397,14 +397,13 @@ Crear las llaves en el local
 
 Esto generar el archivo `id_rsa` en la carpeta `.ssh` copia su contenido en la llave creada en GitHub. 
 
-.pull-center[
+.pull-left[
    ![:scale 50%](./img/github-ssh-key.png)
 ]
 
-.pull-center[
+.pull-right[
    ![:scale 50%](./img/github-ssh-key-crear.png)
 ]
-
 
 ## Para heroku 
 
