@@ -396,13 +396,28 @@ Para poder avanzar con la instalacion se debe descubir el password incial
 
 # Jenkis : Configurar repos de github y heroku
 
-En esta etapa se deben configurar en el proyecto ambos repositorios con sus nombres de repos. 
+En esta etapa se deben configurar en el proyecto ambos repositorios con sus nombres de repositorios,  los mismos se pueden ver con el siguiente comandos: 
+
+```
+git remote -v
+heroku  git@heroku.com:your-project.git (fetch)
+heroku  git@heroku.com:your-project.git (push)
+```
 
 .pull-center[
    ![:scale 70%](./img/jenkis-repos-heroku-github.png)
 ]
 
 ---
+
+# Jenkis : Crear llave publica desde Heroku CLI
+
+Para comenzar a configurar el accesoa los repositorios ejecutar los siguiente comando para obtener las claves de heroku: 
+
+`heroku git:remote --ssh-git`
+`heroku keys:add`
+
+Esto generar el archivo `id_rsap` copia su contenido para crear la llave en Jenkis. 
 
 ## Base de datos remota
 
