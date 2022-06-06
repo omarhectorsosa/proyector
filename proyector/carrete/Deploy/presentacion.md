@@ -376,6 +376,18 @@ Se debe agregar las siguientes variables:
 
 ---
 
+# ¿Que es Jenkis?
+
+- Jenkins es un servidor open source para la integración continua. 
+- Es una herramienta que se utiliza para compilar y probar proyectos de software de forma continua.
+- Facilita a los desarrolladores integrar cambios en un proyecto y entregar nuevas versiones a los usuarios
+
+.pull-center[
+   ![:scale 70%](./img/jenkis-home.png)
+]
+
+---
+
 # Jenkis : Intalación
 
 Comienzo la instalación
@@ -408,12 +420,35 @@ heroku  git@heroku.com:your-project.git (push)
 
 # Jenkis : Crear llave publica desde Heroku CLI
 
-Para comenzar a configurar el accesoa los repositorios ejecutar los siguiente comando para obtener las claves de heroku: 
+## Para github 
 
-`heroku git:remote --ssh-git`
+Crear las llaves en el local
+
+`ssh-keygen -t rsa`
+
+Esto generar el archivo `id_rsa` en la carpeta `.ssh` copia su contenido en la llave creada en GitHub. 
+
+.pull-center[
+   ![:scale 50%](./img/github-ssh-key.png)
+]
+
+.pull-center[
+   ![:scale 50%](./img/github-ssh-key-crear.png)
+]
+
+
+## Para heroku 
+
+Comenzar a configurar el accesoa los repositorios ejecutar los siguiente comando para obtener las claves de heroku: 
+
+`ssh-keygen -t rsa`
+
+Esto generar el archivo `id_rsa` copia su contenido para crear la llave en Jenkis. 
+
+Luego ejecutar los siguientes comandos
+
 `heroku keys:add`
-
-Esto generar el archivo `id_rsap` copia su contenido para crear la llave en Jenkis. 
+`git push heroku`
 
 ---
 
