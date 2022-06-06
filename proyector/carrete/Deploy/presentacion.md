@@ -392,10 +392,6 @@ Para poder avanzar con la instalacion se debe descubir el password incial
 
 # Jenkis : Configurar repos de github y heroku
 
----
-
-# Jenkis : Configurar repos de github y heroku
-
 En esta etapa se deben configurar en el proyecto ambos repositorios con sus nombres de repositorios,  los mismos se pueden ver con el siguiente comandos: 
 
 ```
