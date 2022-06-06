@@ -405,7 +405,7 @@ heroku  git@heroku.com:your-project.git (push)
 ```
 
 .pull-center[
-   ![:scale 70%](./img/jenkis-repos-heroku-github.png)
+   ![:scale 50%](./img/jenkis-repos-heroku-github.png)
 ]
 
 ---
@@ -418,6 +418,8 @@ Para comenzar a configurar el accesoa los repositorios ejecutar los siguiente co
 `heroku keys:add`
 
 Esto generar el archivo `id_rsap` copia su contenido para crear la llave en Jenkis. 
+
+---
 
 ## Base de datos remota
 
