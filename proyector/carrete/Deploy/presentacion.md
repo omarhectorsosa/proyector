@@ -234,37 +234,6 @@ Desde Heroku tambien es posible visualizar el log desde el item `View logs`
 
 ---
 
-## Conectamos a la base de remota `FreeMySQLhosting` el codigo en `Heroku`
-
-Teniendo informada los datos de coneccion accedo a la base  de datos desde `heroku`
-
-```markdown
-<?php
-
-   echo '<body><main clas="container">';
-
-   echo '<div class="row text-center bg-success mb-10"><div class="col-12">Tabla.</div></div>' ;
-
-   if (!($conexion=mysqli_connect("sql5.freemysqlhosting.net","sql5496827","tAee5z4mwN","sql5496827"))) { 
-      echo '<div class="row"><div class="col-12">Error conectando a la base de datos</div></div>' ;
-      echo '</main></body>';  
-      die(); 
-   } 
-
-   $res = mysqli_query($conexion,"SELECT * FROM product") or die(mysqli_error($conexion)); ;
-
-   while($reg = mysqli_fetch_array($res)){
-      echo '<div class="row text-center b-10 boder-secondary border-radius border-5"><div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["id"].'</div>';
-      echo '<div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["name"].'</div>';
-      echo '<div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["price"].'</div>';
-      echo '<div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["description"].'</div></div>';
-   }
-
-?>
-
-```
----
-
 # CI/CD con AWS y GitLab: ¿Que es un AWS Bucket?
 
 .texto-grande[Un bucket es un contenedor para objetos almacenados en Amazon S3. Puede almacenar cualquier cantidad de objetos en un bucket]
@@ -475,6 +444,37 @@ Desde [PhpMyAdmin](https://www.phpmyadmin.co/) podemos acceder a la adminstracio
 .pull-center[
    ![:scale 50%](./img/db-phpmyadmin.png)
 ]
+
+---
+
+## Conectamos a la base de remota `FreeMySQLhosting` el codigo en `Heroku`
+
+Teniendo informada los datos de coneccion accedo a la base  de datos desde `heroku`
+
+```markdown
+<?php
+
+   echo '<body><main clas="container">';
+
+   echo '<div class="row text-center bg-success mb-10"><div class="col-12">Tabla.</div></div>' ;
+
+   if (!($conexion=mysqli_connect("sql5.freemysqlhosting.net","sql5496827","tAee5z4mwN","sql5496827"))) { 
+      echo '<div class="row"><div class="col-12">Error conectando a la base de datos</div></div>' ;
+      echo '</main></body>';  
+      die(); 
+   } 
+
+   $res = mysqli_query($conexion,"SELECT * FROM product") or die(mysqli_error($conexion)); ;
+
+   while($reg = mysqli_fetch_array($res)){
+      echo '<div class="row text-center b-10 boder-secondary border-radius border-5"><div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["id"].'</div>';
+      echo '<div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["name"].'</div>';
+      echo '<div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["price"].'</div>';
+      echo '<div class="col-3 bg-primary border boder-secondary  border-2">'.$reg["description"].'</div></div>';
+   }
+
+?>
+```
 
 ---
 
