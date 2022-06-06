@@ -376,12 +376,31 @@ Se debe agregar las siguientes variables:
 
 ---
 
-# Herramienta Jenkis y Travis
+# Jenkis : Intalación
 
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Comienzo la instalación
 
+`wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -`
+`sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'`
+`sudo apt-get install jenkis`
+
+Para poder avanzar con la instalacion se debe descubir el password incial
+
+`sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+
+---
+
+# Jenkis : Configurar repos de github y heroku
+
+---
+
+# Jenkis : Configurar repos de github y heroku
+
+En esta etapa se deben configurar en el proyecto ambos repositorios con sus nombres de repos. 
+
+.pull-center[
+   ![:scale 70%](./img/jenkis-repos-heroku-github.png)
+]
 
 ---
 
