@@ -23,7 +23,7 @@ class: animated fadeInUp
       - Herramienta `hgrok` y su uso para usar una base de datos local.  
    - Vincular proyecto GitHub con Heroku
 * Herramientas de CI/CD
-   - ¿Que son las herramientas Travis y Jenkis? 
+   - ¿Que son las herramientas Travis y Jenkcd pis? 
    - Vincular GitHub + Jenkis (opensource) + Heroku (opensource)
    - Vincular GitHub + Travis (opensource) + Heroku (opensource)
 * AWS Cloud
@@ -319,7 +319,7 @@ Y al final vemos el resultado accediendo al sitio
 
 ---
 
-# Vincular GitHub + Jenkis (opensource) + Heroku (opensource) - Jenskis
+# Vincular GitHub + Jenkis (opensource) + Heroku (opensource)
 
 Comienzo la instalación de jenkis en nuestra maquina local
 
@@ -337,20 +337,17 @@ Para poder avanzar con la instalacion se debe descubir el password incial
 
 ---
 
-# Vincular GitHub + Jenkis (opensource) + Heroku (opensource) - Jenskis
+# Vincular GitHub + Jenkis (opensource) + Heroku (opensource)
 
 `¿Como crear una tarea en jenkis`
 
 Dependiendo de los permisos del usuario, en el dashboard inicial aparecerá la opción “New Item“
-
 - Nombrar la tarea acorde con la actividad
 - Escoger “Freestyle project“
 - Ir a “configure“
 
 `¿Como configurar una tarea en jenkis?`
-
 Una tarea en Jenkins de tipo “Freestyle project” se ejecuta teniendo en cuenta el siguiente flujo:
-
 - General: Define aspectos generales del proyecto
 - Source Code Management: Define dónde se encuentra el proyecto (CVS, Git, etc)
 - Build Triggers: Define qué acción va a hacer que el proyecto que estamos creando se ejecute
@@ -361,7 +358,7 @@ Para el ejemplo crearemos un flujo configurando algunos aspectos a manera de eje
 
 ---
 
-# Vincular GitHub + Jenkis (opensource) + Heroku (opensource) - Jenskis
+# Vincular GitHub + Jenkis (opensource) + Heroku (opensource)
 
 `¿Como configurar los respositorios?`
 
@@ -382,7 +379,7 @@ No olvidar que si queremos que las pruebas se ejecuten en una rama en particular
 
 ---
 
-# Vincular GitHub + Jenkis (opensource) + Heroku (opensource) - Jenskis
+# Vincular GitHub + Jenkis (opensource) + Heroku (opensource)
 
 Queremos que la tarea de Jenkins se ejecute cada vez que existe un cambio en la rama develop de nuestro repositorio, para esto seleccionamos la opción “Build when a change is pushed to BitBucket”
 
@@ -392,7 +389,7 @@ Queremos que la tarea de Jenkins se ejecute cada vez que existe un cambio en la 
 
 ---
 
-# Vincular GitHub + Jenkis (opensource) + Heroku (opensource) - Jenskis
+# Vincular GitHub + Jenkis (opensource) + Heroku (opensource)
 
 Después de ejecutar las pruebas queremos que se realice el despliegue automático de nuestra aplicación en Heroku, ya que para hacer el despliegue en Heroku tan solo es necesario realizar push a la rama master del proyecto, debemos:
 
@@ -409,7 +406,7 @@ Después de ejecutar las pruebas queremos que se realice el despliegue automáti
 
 ---
 
-# Vincular GitHub + Jenkis (opensource) + Heroku (opensource) - Jenskis
+## Vincular GitHub + Jenkis (opensource) + Heroku (opensource)
 
 Crear las llaves desde el local para github y heroku
 
@@ -427,7 +424,7 @@ Esto generar el archivo `id_rsa` en la carpeta `.ssh` copia su contenido en la l
 ---
 
 
-# Vincular GitHub + Jenkis (opensource) + Heroku (opensource) - Jenskis
+## Vincular GitHub + Jenkis (opensource) + Heroku (opensource)
 
 Comenzar a configurar el accesoa los repositorios ejecutar los siguiente comando para obtener las claves de heroku: 
 
@@ -442,7 +439,7 @@ Luego ejecutar los siguientes comandos
 
 ---
 
-## Vincular GitHub + Jenkis + Heroku (opensource)
+## Vincular GitHub + Jenkis (opensource) + Heroku (opensource)
 
 Creo una conexion publica de mi local
 
@@ -499,7 +496,9 @@ Se hace algun cambio en el proyecto y deberiamos tener la tarea en travis
 .pull-center[
    ![:scale 100%](./img/heroku-travis.png)
 ]
+
 ---
+
 # Aws Cloud: 
 
 .texto-grande[Un bucket es un contenedor para objetos almacenados en Amazon S3. Puede almacenar cualquier cantidad de objetos en un bucket]
