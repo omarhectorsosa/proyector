@@ -23,7 +23,7 @@ class: animated fadeInUp
       - Herramienta `hgrok` y su uso para usar una base de datos local.  
    - Vincular proyecto GitHub con Heroku
 * Herramientas de CI/CD
-   - ¿Que son las herramientas Travis y Jenkcd pis? 
+   - ¿Que son las herramientas Travis y Jenkis? 
    - Vincular GitHub + Jenkis (opensource) + Heroku (opensource)
    - Vincular GitHub + Travis (opensource) + Heroku (opensource)
 * AWS Cloud
