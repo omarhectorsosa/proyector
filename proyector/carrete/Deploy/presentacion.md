@@ -23,12 +23,11 @@ class: animated fadeInUp
    - Vincular GitLab con AWS
 * Herramienta Jenkis y Travis
    - Hechemos un vistazo a Travis y Jenkis
-   - Vincular Gitlab a Jenkis (opensource)     
-* Alternativas para bases de datos mysql remotas 
-   - Crear BD con `FreeMySQLhosting` 
-   - Conectar y administrar con `PhpMyAdmin`
-   - Conectar proyecto Heroku a base de datos remota  
-
+   - Vincular GitHub a Jenkis (opensource)     
+* Conectar a una base de datos local desde heroku 
+   - Herramienta `hgrok` 
+   - Conectar desde la web 
+   
 ---
 
 ## Concepto de CI/CD: Integración continua y entrega continua
@@ -493,18 +492,28 @@ Luego ejecutar los siguientes comandos
 
 ---
 
-## Base de datos remota
+# GitHuB : Notificaciones de cambios a jenkis con Webooks 
 
-Vamos a generar una base de datos MySQL remota, en esta ocasion utilizaremos [FreeMySQLhosting](https://www.freemysqlhosting.net/)
+Creo una conexion con mi local
+
+`ngrok http 8080`
+
+Luego agrego la direccion de jenkis
+
+`{dominiogenerado}/github-webhook`
+
+Luego verifico la tarea en `jenkis`
+
+---
+
+## Conectar base de datos local con `hgrok`
+
+Teniendo instalado `mysql` en mi maquina local genero un puente para acceder desde la web publicada
+
+`hgrok tcp 3306`
 
 .pull-center[
-   ![:scale 80%](./img/free-mysql.png)
-]
-
-Creamos la base de datos y obtendremos el servidor, nombre de base de datos, usuario y contraseña
-
-.pull-center[
-   ![:scale 80%](./img/free-mysql-db.png)
+   ![:scale 80%](./img/hgrok-local.png)
 ]
 
 ---
@@ -519,7 +528,7 @@ Desde [PhpMyAdmin](https://www.phpmyadmin.co/) podemos acceder a la adminstracio
 
 ---
 
-## Conectamos a la base de remota `FreeMySQLhosting` el codigo en `Heroku`
+## Conectamos a la base local en el codigo en `Heroku`
 
 Teniendo informada los datos de coneccion accedo a la base  de datos desde `heroku`
 
