@@ -1,0 +1,42 @@
+{% extends 'backoffice/layout/backoffice_layout.html.twig' %}
+{% block content %}
+<section class="section profile">
+   <div class="row">
+      <div class="col-xl-8">
+         <div class="card card-body profile-overview pt-3">
+            
+            <div class="row">
+            <div class="col-lg-3 col-md-4 label ">{{ "backoffice.product.id"|trans }}</div>
+            <div class="col-lg-9 col-md-8">{{ product.id}}</div>
+            </div>
+
+            <div class="row">
+            <div class="col-lg-3 col-md-4 label ">{{ "backoffice.product.name"|trans }}</div>
+            <div class="col-lg-9 col-md-8">{{ product.name}}</div>
+            </div>
+
+            <div class="row">
+            <div class="col-lg-3 col-md-4 label ">{{ "backoffice.product.description"|trans }}</div>
+            <div class="col-lg-9 col-md-8">{{ product.description}}</div>
+            </div>
+
+            <div class="row">
+            <div class="col-lg-3 col-md-4 label ">{{ "backoffice.product.price"|trans }}</div>
+            <div class="col-lg-9 col-md-8">{{ product.price}}</div>
+            </div>
+
+            <div class="row">
+            <div class="col-lg-3 col-md-4 label ">{{ "backoffice.product.state"|trans }}</div>
+            <div class="col-lg-9 col-md-8">{{ product.state.name}}</div>
+            </div>
+
+            <div class="row mb-3">
+            <div class="col-sm-10">
+               <a href="{{ path('app_backoffice_product_list') }}" class="btn btn-success">Volver</a>
+            </div>
+            
+         </div>
+      </div>
+   </div>
+</section> 
+{% endblock %}

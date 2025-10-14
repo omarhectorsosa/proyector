@@ -159,6 +159,7 @@ Algunos antivirus disponibles en el mercado son:
 ---
 ## Introduccion 
 
+
 ### Validación, Activación y Chequeo de antivirus
 
 Desde el centro de seguridad de Windows podemos checkear nuestro antivirus
@@ -759,6 +760,7 @@ Tener en cuenta que la comunicacion por correo se define como carecter formal y 
 ---
 
 ## Firma Digital
+
 ### Concepto
 
 Es el conjunto de caracteres que se añaden al final de un documento o cuerpo de un mensaje para
@@ -766,6 +768,40 @@ informar, dar fe o mostrar validez y seguridad.
 
 .center[<iframe width="560" height="315" src="https://www.youtube.com/embed/b-yDMVqklXQ?si=O3lU9R0teIprbuQB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>]
 
+---
+
+## Office 365
+
+### OneDrive Acceso 
+
+.pull-left[
+   ![:scale 95%](image-8.png)
+]
+
+.pull-right[
+   ![:scale 70%](image-9.png)
+]   
+
+
+
+---
+
+## Office 365
+
+### OneDrive Uso
+
+.pull-center[
+   ![:scale 80%](image-10.png)
+]
+---
+
+## OFFICE 365
+
+### Sway
+
+.pull-center[
+   ![:scale 90%](image-11.png)
+]
 
 ---
 class: center, middle, inverse

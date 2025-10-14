@@ -103,6 +103,14 @@ Evolucion CSS
 
 ---
 
+### Algo de Boostrap
+
+Bootstrap es un popular framework front-end de código abierto (un conjunto de herramientas y plantillas) que facilita la creación rápida y sencilla de sitios web y aplicaciones responsivos
+
+[Fuente](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+
+---
+
 ### Input Types 
 
 Crea una página web que contenga un formulario con los siguientes campos de información:
@@ -606,6 +614,7 @@ La flex-growpropiedad especifica cuánto crecerá un elemento flexible en relaci
 </div>
 ```
 ---
+
 ### Propiedad   `flex-shrink`
 La flex-shrinkpropiedad especifica cuánto se encogerá un elemento flexible en relación con el resto de los elementos flexibles.
 
@@ -637,7 +646,26 @@ La propiedad `flex-basis`  especifica la longitud inicial de un elemento flexibl
 ```
 
 [Documentación](https://www.w3schools.com/cssref/css3_pr_flex-basis.asp)
+
 ---
+
+### Media queries : `@media`
+
+Las media queries son una característica de CSS que permite aplicar estilos diferentes a una página web basándose en características del dispositivo, como su resolución, ancho o tipo de pantalla.
+
+```css
+ @media (max-width: 600px) {
+      .col {
+        width: 100%; /* ocupar todo el ancho en pantallas pequeñas */
+        background-color: darkorange; /* cambia el color */
+      }
+    }
+```
+
+[Fuente](https://www.w3schools.com/css/css_rwd_mediaqueries.asp)
+
+---
+
 ##  Transiciones 
 
 Las transiciones permiten animar los cambios de las propiedades CSS, esta propiedad es `transition`. Para que una transición se dispare necesitamos que haya un cambio de estado en el elemento html, que puede ser  `:hover` `:focus` `:visited` `:linked`
@@ -745,6 +773,7 @@ A diferencia de las transiciones, las animaciones, no dependen de los estados de
 ```
 [Animacion circular](http://127.0.0.1:2000/final/8_animacion/animacion_ciclo.html)
 
+
 ---
 
 ### Animaciones : `@keyframes`
@@ -794,8 +823,8 @@ div {
 
 - [Animacion con avance gradual de cuadro](http://127.0.0.1:2000/final/8_animacion/animacion_avance_cuadro.html)
 
----
 
+---
 class: center, middle, inverse
 
 ## Gracias!

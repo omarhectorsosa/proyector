@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "frontoffice/layout/frontoffice_head.html.twig" %}
+
+<body>
+    {% include "frontoffice/layout/frontoffice_topbar.html.twig" %}
+
+    {% include "frontoffice/layout/frontoffice_navbar.html.twig" %}
+
+    {% block content%}{%endblock%}
+
+    {% include "frontoffice/layout/frontoffice_footer.html.twig" %}
+  
+    {% include "frontoffice/layout/frontoffice_javascript.html.twig" %}
+   
+</body>
+
+</html>

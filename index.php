@@ -20,7 +20,7 @@
       <div class="row d-flex justify-content-center mt-6">
         <div class="col-sm-9">
           <div class="row gap-4 d-flex justify-content-center">
-            <div class="col1 col-lg-7 col-10 p-3 rounded-3">
+            <div class="col1 col-lg-4 col-10 p-3 rounded-3">
               <div class="row">
                 <div class="col-1 avatar">
                   <img src="./img/internet.jpg" class="rounded-circle" alt="daniel-icon" width="30" height="30">
@@ -43,7 +43,7 @@
                   <img src="./img/internet.jpg" class="rounded-circle" alt="Jonathan-icon" width="30" height="30">
                 </div>
                 <div class="col-10 mt-3">
-                  <h1 class="title"><a href="../carrete/symfony5/index.html"> Symfony </a></h1>
+                  <h1 class="title"><a href="../carrete/symfony(part.1)/index.html"> Symfony (Parte 1) </a></h1>
                   <h2 class="subtitle"> Programacion Web II </h2>
                 </div>
               </div>
@@ -53,6 +53,23 @@
                 </p>
               </div>
             </div>
+            <div class="col1 col-lg-3 p-3 col-10 rounded-3">
+              <div class="row">
+                <div class="col-2 avatar">
+                  <img src="./img/internet.jpg" class="rounded-circle" alt="Jonathan-icon" width="30" height="30">
+                </div>
+                <div class="col-10 mt-3">
+                  <h1 class="title"><a href="../carrete/symfony(part.2)/index.html"> Symfony (Parte 2) </a></h1>
+                  <h2 class="subtitle"> Programacion Web II </h2>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <p class="content-title">
+                  Concepto de Formulario. ¿Que es un servicio?. Integrar al proyecto las excepciones.
+                </p>
+              </div>
+            </div>
+            
           </div>
           <div class="row gap-4 d-flex justify-content-center">
             <div class="col3 col-lg-4 col-10 p-3 rounded-3 gy-4">
@@ -101,7 +118,7 @@
           </div>
           <div class="row mt-2">
             <p class="content-title1">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. In, numquam quam facere alias repellendus voluptates, amet voluptatem cum incidunt, at earum. Officia ducimus reprehenderit vel veritatis ratione beatae ab repellat!
+              Lorem
             </p>
           </div>
         </div>
