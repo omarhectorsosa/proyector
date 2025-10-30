@@ -19,14 +19,17 @@ class: animated fadeInUp
 * Conceptos
     - Flujo de información en Symfony
     - Estructura de directorio en Symfony
-    - Archivos y carpetas destacadas
-    - intalación core de Symfony
-    - Comando `symfony console`
-* Inicio de proyecto
+    - Carpetas y archivos destacados
+    - Instalación core de Symfony
+    - Consola Symfony 
+        - `symfony console` vs `php bin/console`
+* Inicio de proyecto `Symfony 5.5`
     - Symfony `new project`
-    - Utilizar `Docker` para la BD y el servidor WEB
+    - Concepto de `composer` para instalar librería
     - Archivos de configuracion `.env` y `.env.local`
+    - Utilizar `Docker` para la BD y el servidor WEB
     - Archivo `.htaccess`
+    - Crear `database`
     - Caracteristicas del negocio del proyecto
     - Creación `controlador` y `template` con un HolaMundo 
 
@@ -169,9 +172,9 @@ $ symfony new my_project_name --version="5.1"
 Instalar composer `sudo apt-get install composer` (recomendable)
 
 ```bash
-composer create-project symfony/skeleton my_project_name
-composer create-project symfony/website-skeleton my_project_name
-composer create-project symfony/website-skeleton my_project_name 5.1.*
+composer create-project symfony/skeleton project-temp_5.1-7
+composer create-project symfony/website-skeleton project-temp_5.1-7
+composer create-project symfony/website-skeleton project-temp_5.1-7 5.1.*
 ```
 
 [Fuente](https://symfony.com/doc/5.x/setup.html#creating-symfony-applications) 
@@ -180,7 +183,7 @@ composer create-project symfony/website-skeleton my_project_name 5.1.*
 ---
 # Inicio de proyecto
 
-Configurar [.env](./doc/.env) con los ambientes y conección a base de datos.
+Configurar [.env](./doc/.env) con los ambientes y conección a base de datos. 
 
 ```markdow
 ###> symfony/framework-bundle ###
@@ -188,12 +191,14 @@ Configurar [.env](./doc/.env) con los ambientes y conección a base de datos.
 APP_ENV='dev'
 
 ###> doctrine/doctrine-bundle ###
-DATABASE_URL=mysql://root:password@localhost:3306/almacen
+DATABASE_URL=mysql://ososa:ososa123@localhost:3306/temp7
 
 ###> symfony/swiftmailer-bundle ###
 MAILER_URL=smtp://mail.psasender.com.ar:587?username=senderauth@psasender.com.ar&password=92ADvi!YV8r
 ###< symfony/swiftmailer-bundle ###
 ```
+
+En ocasiones se deja configurado en `.env.local` para trabajar en modo desarrollo en su maquina local
 
 ---
 
@@ -202,7 +207,7 @@ MAILER_URL=smtp://mail.psasender.com.ar:587?username=senderauth@psasender.com.ar
 ## Correr el base de datos y el servidor Web
 
 Teniendo las imagenes que corresponden en los [Docker Hub](https://hub.docker.com/)
-Subimos al proyecto el [docker-composer.json](./docker/docker-compose.yml) 
+Subimos al proyecto el [docker-composer.json](./doc/docker/docker-compose.yml) 
 
 ```json
 
@@ -214,7 +219,7 @@ services:
       MYSQL_ROOT_PASSWORD: **3d@x**
       MYSQL_USER: ososa
       MYSQL_PASSWORD: ososa123
-      MYSQL_DATABASE: temp
+      MYSQL_DATABASE: temp7
     restart: unless-stopped
     //..
   web:
@@ -229,29 +234,11 @@ volumes:
 
 # Inicio de proyecto
 
-# Configura el archivos `htaccess`
+## Creo la base de datos en base a la configuración (opcional)
 
-El archivo `.htaccess` permite la modificación de la configuración específica para directorios individuales 
-sin afectar la configuración global del servidor. Este archivo se debe llevar a la carpeta `public`
+En el caso que no tengamos la base de datos se debe ejecutar el siguiente comando. 
 
-LLevar a public el archivo [.htaccess](./rwriter/.htaccess) para ordenar los accesos 
-
-```bash
-   <IfModule mod_rewrite.c>
-       RewriteEngine On
-       RewriteCond %{HTTP:Authorization} ^(.*)
-       RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]   
-       RewriteCond %{REQUEST_FILENAME} !-f
-       RewriteRule ^(.*)$ index.php [QSA,L]
-   </IfModule>
-```
----
-
-# Inicio de proyecto
-
-## Creo la base de datos en base a la configuración (en el caso que no exista)
-
-Luego se debe ejecutar el siguiente comando 
+En nuestro caso, recordar, que la base de datos se genero por el Docker.
 
 ```markdow 
 $ symfony console doctrine:database:create
@@ -270,14 +257,13 @@ mysql> show databases;
 ```
 
 Es posible instalar el paquete `Doctrine ORM`  corriendo el comando `$ composer require symfony/orm-pack`
-
 ---
 
 # Inicio de proyecto
 
 ## Visualizar aplicacion
 
-Y vamos al navegar para ubicar nuestro sitio y su presentacion:
+Y vamos al navegar para ubicar nuestro sitio y su presentacion `https://localhost:8000/`:
 
 .pull-center[
    ![:scale 65%](./img/symfony5.0.png)
@@ -376,9 +362,30 @@ En este punto se crearon los correspondientes controladores y vista (template)
 
 # Inicio de proyecto
 
+# Configura el archivos `htaccess`
+
+El archivo `.htaccess` permite la modificación de la configuración específica para directorios individuales 
+sin afectar la configuración global del servidor. Este archivo se debe llevar a la carpeta `public`
+
+LLevar a public el archivo [.htaccess](./doc/rwriter/.htaccess) para ordenar los accesos 
+
+```bash
+   <IfModule mod_rewrite.c>
+       RewriteEngine On
+       RewriteCond %{HTTP:Authorization} ^(.*)
+       RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]   
+       RewriteCond %{REQUEST_FILENAME} !-f
+       RewriteRule ^(.*)$ index.php [QSA,L]
+   </IfModule>
+```
+---
+
+# Inicio de proyecto
+
 ## Pagina inicial y route
 
-Desde la url onfigurada puedo acceder a `http://127.0.0.1/hola/mundo`
+Desde la url onfigurada puedo acceder a `http://127.0.0.1:8000/hola/mundo`
+
 .pull-center[
    ![:scale 65%](./img/hola_mundo.png)
 ] 
@@ -699,7 +706,7 @@ public function list(): Response {
 
 ## Entity `state`
 
-Para una mejor vista agregar motor boostrap para el `backoffice` para el template con los siguientes paso: 
+Para una mejor vista agregar motor boostrap para el `backoffice` para el template con los siguientes paso tomado desde [NiceAdmin Publico](https://bootstrapmade.com/demo/NiceAdmin/) : 
 
 Para poder integrar el framework de boostrap debemos seguir los siguientes pasos:
 
@@ -718,7 +725,6 @@ Para poder integrar el framework de boostrap debemos seguir los siguientes pasos
 {% endblock %}
 ```
 
-[Fuente](https://bootstrapmade.com/demo/NiceAdmin/)
 
 ---
 
@@ -731,7 +737,7 @@ Modificar  el `templates/backoffice/state/list.html.twig`
 ```php
 {% extends 'backoffice/layout/backoffice_layout.html.twig' %}
 {% block title %}Hello StateController!{% endblock %}
-{% block body %}
+{% block content %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
@@ -763,6 +769,30 @@ Cuando verifiquemos que todo el `Framework del Boostrap`  este correctamente con
 
 1. Copio los templates [State](./doc/template/plantillas/backoffice/state/state.zip) en `templates/state`
 1. Copio los templates [Product](./doc/template/plantillas/backoffice/product/product.zip) en `templates/product`
+
+---
+
+## Entity `state` 
+
+Agrego las translations del template
+
+Las `traducciones` se utiliza para unificar los terminos en diferente idiomas en base a una configuracion para eso se realiza las siguientes tareas.  
+
+1. Configura el tranlations
+
+Configurar el idioma por defecto `config/package/translations.yaml`
+
+```yaml
+framework:
+    default_locale: es
+    translator:
+        default_path: '%kernel.project_dir%/translations'
+        fallbacks:
+            - es
+```
+
+1. Configurar los terminos en `translations` creando o copiando los documentos [Transaltions](./doc/translations/translations.zip)
+1. Copio todo las tranlations correspondiente utilzados en los template agregar `tranlations/messages.es.yaml`
 
 ---
 
@@ -800,9 +830,11 @@ Antes de hacer eso, ya que tenemos el controlador ProductController agrego en el
 
 Agregar el mensaje en el template base.
 
-En un templete base (layout) agrega el siguiente div para los mensaje de exito 
+En el templete base `/templates/base.html.twig` agrega el siguiente div para los mensaje de exito 
 
 ```markdown
+<body>
+//...
 {% for message in app.flashes('success') %}
 <div class="alert alert-success ml-10" style="margin-left:20px; margin-right:20px">
     {{ message }}
@@ -813,40 +845,16 @@ En un templete base (layout) agrega el siguiente div para los mensaje de exito
     {{ message }}
 </div>
 {% endfor %}
+//..
 ```
 
 Desde el controlador puedo utilizar estos mensaje de la siguiente manera
 
 ```php
 //..
-$this->addFlash('success','Se guardo correctamente el producto');
+$this->addFlash('success','Mensaje de exito..');
 //..
 ```
-
----
-
-## Entity `state` 
-
-Agrego las translations del template
-
-Las `traducciones` se utiliza para unificar los terminos en diferente idiomas en base a una configuracion para eso se realiza las siguientes tareas.  
-
-1. Configura el tranlations
-
-Configurar el idioma por defecto `config/package/translations.yaml`
-
-```yaml
-framework:
-    default_locale: es
-    translator:
-        default_path: '%kernel.project_dir%/translations'
-        fallbacks:
-            - es
-```
-
-1. Configurar los terminos en `translations` creando o copiando los documentos [Transaltions](./doc/translations/translations.zip)
-1. Copio todo las tranlations correspondiente utilzados en los template agregar `tranlations/messages.es.yaml`
-
 
 ---
 

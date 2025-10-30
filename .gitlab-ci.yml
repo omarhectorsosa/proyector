@@ -1,0 +1,74 @@
+stages:
+  - deploy
+
+variables:
+  GIT_DEPTH: "0"   # 🔥 Clona todo el historial para que git diff funcione
+
+deploy_to_infinityfree:
+  stage: deploy
+  image: debian:stable-slim
+  before_script:
+    - apt-get update -qq && apt-get install -y lftp git
+  script:
+    - echo "🚀 Iniciando deploy a InfinityFree (solo archivos modificados)..."
+
+    # Configurar entorno seguro de Git
+    - git config --global --add safe.directory "$CI_PROJECT_DIR"
+
+    # Obtener cambios respecto al branch remoto (último commit)
+    - git fetch origin main || echo "⚠️ No se pudo hacer fetch del remoto, se continúa igual."
+
+    # Detectar archivos modificados (excepto el propio .gitlab-ci.yml)
+    - CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep -v ".gitlab-ci.yml" || true)
+
+    # Crear lista de archivos válidos (existentes)
+    - rm -f changed_files.txt
+    - |
+      if [ -n "$CHANGED_FILES" ]; then
+        echo "$CHANGED_FILES" | while read file; do
+          if [ -f "$file" ]; then
+            echo "$file" >> changed_files.txt
+          fi
+        done || true
+      fi
+    - touch changed_files.txt  # asegura que exista siempre
+
+    # Mostrar archivos detectados
+    - echo ""
+    - echo "📄==============================="
+    - echo " Archivos modificados detectados"
+    - echo "==============================="
+    - if [ -s changed_files.txt ]; then
+        nl -w2 -s'. ' changed_files.txt;
+      else
+        echo "⚪ No hay archivos modificados.";
+      fi
+    - echo "================================"
+    - echo ""
+    
+    # Subir solo los archivos modificados vía FTP
+    - |
+      if [ -s changed_files.txt ]; then
+        echo "🚚 Subiendo archivos modificados al servidor..."
+        while read -r file; do
+          echo "→ Subiendo $file..."
+          lftp -e "
+            set ftp:ssl-allow no;
+            open -u $FTP_USER,$FTP_PASS $FTP_HOST;
+            lcd .;
+            cd htdocs;
+            put -O $(dirname "$file") $file;
+            bye;
+          "
+        done < changed_files.txt
+        echo "✅ Deploy completado correctamente."
+      else
+        echo "✅ No hay archivos modificados, no se sube nada."
+      fi
+
+
+
+    # Fuerza salida exitosa aunque no haya cambios
+    - exit 0
+  only:
+    - main
